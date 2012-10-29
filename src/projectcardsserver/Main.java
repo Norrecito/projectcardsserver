@@ -16,9 +16,10 @@ import java.net.Socket;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
+    /*
+     * A szerver konfigurációja
      */
+    private static final Config conf = new Config();
     
     /*
      * A naplózáshóz szükséges üzenettípusok deklarálása

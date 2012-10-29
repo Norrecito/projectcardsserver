@@ -18,6 +18,11 @@ import java.net.Socket;
 public class ServerHandler {
   
     /*
+     * A konfiguráció
+     */
+    Config conf;
+    
+    /*
      * Segédváltozók
      */
     private String clientSentence; //kliens üzenete
@@ -35,8 +40,10 @@ public class ServerHandler {
     private BufferedReader inFromClient;
     private DataOutputStream outToClient;
     
-    public ServerHandler() throws IOException{
+    public ServerHandler(Config conf) throws IOException{
        
+        this.conf = conf; //a konfiguráció beállítása
+        
         /*
          * Socket és ServerSocket létrehozása
          */
