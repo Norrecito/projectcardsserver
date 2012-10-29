@@ -19,7 +19,7 @@ public class Main {
     /*
      * A szerver konfigurációja
      */
-    private static final Config conf = new Config();
+    private static final Config conf = Config.getInstance();
     
     /*
      * A naplózáshóz szükséges üzenettípusok deklarálása

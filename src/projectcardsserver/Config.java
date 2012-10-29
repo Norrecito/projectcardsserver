@@ -70,13 +70,6 @@ public class Config {
     }
     
     /*
-     * Ellenőrzi helyes-e a konfiguráció
-     */
-    public boolean isCorrect(){
-        return getPort() != null;
-    }
-    
-    /*
      * Fájlból beolvassa és létrehozza a konfigurációs objektumot
      */
     public static Config getInstance(){
@@ -133,6 +126,20 @@ public class Config {
         }
         return null;
     
-} 
+}
+    
+    /*
+     * Ellenőrzi helyes-e a konfiguráció
+     */
+    public boolean isCorrect(){
+        return getPort() != null;
+    }
+    
+    /*
+     * Megnézi hogy a konfiguráció üres-e azaz új, és most lett csak létrehozva
+     */
+    public boolean isNew(){
+        return getValues() == null;
+    }
     
 }
