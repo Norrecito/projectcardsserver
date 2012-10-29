@@ -22,7 +22,7 @@ public class ServerGUI extends JFrame {
     /*
      * A napló panelhez tartozó "Naplózás" felirat
      */
-    private final JLabel lbLog = new JLabel("Naplózás");
+    private final JLabel lbLog = new JLabel("Naplózás és chat");
     
     /*
      * A chat szövegmező
@@ -32,7 +32,7 @@ public class ServerGUI extends JFrame {
     /*
      * A naplózást tartalmazó szövegterület
      */
-    private final JTextPane tpLog = new JTextPane();
+    private final JTextArea tpLog = new JTextArea();
     
     /*
      * A szerveren lévő játékosok listáját tartalmazó lista
@@ -89,7 +89,7 @@ public class ServerGUI extends JFrame {
        
        initComponents(); //A komponensek inicializálása
        initWindow();     //Az ablak inicializálása
-       
+       tpLog.setText("[INFO] Grafikus felület elindítva"); //Teszt
     }
     
     private void initComponents(){
@@ -121,5 +121,12 @@ public class ServerGUI extends JFrame {
       pack(); //Tönörítse az ablakot az komponensek méretétől függően
       setLocationRelativeTo(null); //Az ablak középen jelenjen meg
       setResizable(false); //Nem lehet átméretezni
+    }
+    
+    /*
+     * Új naplóbejegyzés felvitelére szolgáló metódus
+     */
+    public void addLog(String type, String message){
+       tpLog.append(type+message+"\n"); 
     }
 }
