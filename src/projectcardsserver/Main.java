@@ -23,25 +23,36 @@ public class Main {
     /*
      * A naplózáshóz szükséges üzenettípusok deklarálása
      */
-    private String typeINFO = "[INFO] ";
-    private String typeWARNING = "[WARNING] ";
-    private String typeERROR = "[ERROR] ";
+    private static final String typeINFO = "[INFO] ";
+    private static final String typeWARNING = "[WARNING] ";
+    private static final String typeERROR = "[ERROR] ";
     
     /*
      * Engedélyezve van-e a szerverhez tartozó grafikus felület
      */
-    private boolean guiEnabled=true;
+    private static boolean guiEnabled=true;
     
     /*
      * A szerverhez tartozó grafikus felhasználói felület
      */
     private static final ServerGUI servGUI = new ServerGUI();
     
+    /*
+     * A naplózással foglalkozó osztály
+     */
+    private static final Logger logger = new Logger(guiEnabled,servGUI);
     
+      /*
+       * A Main metódus
+       */
       public static void main(String argv[]) throws Exception {
          
-         String clientSentence;
-         String capitalizedSentence;
+         String clientSentence; //kliens üzenete
+         String capitalizedSentence; //üzenet a kliensnek
+         
+         /*
+          * A ServerSocket létrehozása a "6789"-es portra
+          */
          ServerSocket welcomeSocket = new ServerSocket(6789);
 
          while(true)

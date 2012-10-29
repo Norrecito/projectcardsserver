@@ -35,19 +35,24 @@ public class ServerGUI extends JFrame {
     private final JTextArea tpLog = new JTextArea();
     
     /*
+     * A listáhóz tartozó listamodell
+     */
+    private DefaultListModel listModel = new DefaultListModel();
+    
+    /*
      * A szerveren lévő játékosok listáját tartalmazó lista
      */
-    JList lsCharList = new JList();
+    private JList lsCharList = new JList(listModel);
     
     /*
      * A játékos listát egy görgethető felületre rakom
      */
-    JScrollPane charlistScroller = new JScrollPane(lsCharList);
+    private JScrollPane charlistScroller = new JScrollPane(lsCharList);
     
     /*
      * A naplózást megjelenítő szövegterületet szintén egy görgethető felületre rakom
      */
-    JScrollPane logScroller = new JScrollPane(tpLog);
+    private JScrollPane logScroller = new JScrollPane(tpLog);
     
     /*
      * A naplózást, a hozzá tartozó feliratot, és a chat mezőt megjelenítő panel
