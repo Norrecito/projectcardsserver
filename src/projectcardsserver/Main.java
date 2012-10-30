@@ -4,11 +4,6 @@
  */
 package projectcardsserver;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
-
 /**
  * Itt még miden erőssen teszt jellegü
  * @author Norrecito
@@ -33,7 +28,7 @@ public class Main {
     /*
      * A naplózással foglalkozó osztály
      */
-    private static final ServerLogger logger = new ServerLogger(guiEnabled,servGUI);
+    private static final ServerLogger logger = new ServerLogger(servGUI);
     
     /*
      * A szerver indítását illetve leállítását végző osztály
@@ -45,31 +40,26 @@ public class Main {
        */
       public static void main(String argv[]) throws Exception {
          
+         setOptions(argv);
          servhandler.startServer();
          
-         /*
-         String clientSentence; //kliens üzenete
-         String capitalizedSentence; //üzenet a kliensnek
-         
-         
-         ServerSocket welcomeSocket = new ServerSocket(6789);
-
-         while(true)
-         {
-            Socket connectionSocket = welcomeSocket.accept();
-            ObjectInputStream inFromClient =
-            new ObjectInputStream(connectionSocket.getInputStream());
-            ObjectOutputStream outToClient = new ObjectOutputStream(connectionSocket.getOutputStream());
-            clientSentence = inFromClient.readUTF();
-            System.out.println("Üzenet klienstől: " + clientSentence);
-            capitalizedSentence = clientSentence.toUpperCase() + '\n';
-            outToClient.writeUTF(capitalizedSentence);
-         }
-         
-         * 
-         */
-         
-         
+        }
+      
+      /*
+       * A konzolból beolvasott indítási paraméterek alapján elvégzi a megfelelő beállításokat
+       * a következő indítási paraméterek lehetségesek (melletük a kiváltott hatással):
+       * "-go" (GUI Off): a szerverhez tartozó grafikus felület nem lesz látható futás alatt
+       * "-lo" (Log Off): a konzolra történő naplóbejegyzések kiírását szünteti meg
+       */
+      private static void setOptions(String[] args){
+        if(args.length == 1) {
+          if(args[0].equals("-go")) {
+              servGUI.Enabled(false);
+          } 
+          else if(args[0].equals("-lo")){
+              ServerLogger.Enabled(false);
+          }
+        } 
       }
     }
 

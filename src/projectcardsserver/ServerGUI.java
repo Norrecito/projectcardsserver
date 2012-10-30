@@ -143,7 +143,7 @@ public class ServerGUI extends JFrame {
     /*
      * Engedélyezve van-e a grafikus felület
      */
-    public void enabled(boolean enabled){
+    public void Enabled(boolean enabled){
         setVisible(enabled);
     }
 }

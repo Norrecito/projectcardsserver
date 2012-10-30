@@ -14,6 +14,11 @@ import java.util.Calendar;
 public class ServerLogger {
      
     /*
+     * Engedélyezve van-e 
+     */
+    private static boolean isEnabled=true;
+    
+    /*
      * Az idő kiíratásáhóz szükséges "Szimpla időformátum"
      */
     private static SimpleDateFormat time = new SimpleDateFormat("H:mm:ss");
@@ -38,10 +43,9 @@ public class ServerLogger {
     /*
      * Konstruktor
      */
-    public ServerLogger(boolean isServerGUIEnabled,ServerGUI servgui){
+    public ServerLogger(ServerGUI servgui){
         
         this.servgui = servgui;
-        this.isServerGUIEnabled = isServerGUIEnabled;
         
     }
     
@@ -76,16 +80,18 @@ public class ServerLogger {
             case 3: type=typeERROR;
             break;
     }
-        
-        writeLogToConsole(type, message);
+        if(isEnabled) {
+          writeLogToConsole(type, message);
         
         /*
          * Amennyiben engedélyezve van a szerver grafikus felhasználói felülete,
          * oda is kiíratja a naplóbejegyzést
          */
-        if(isServerGUIEnabled){
+         if(isServerGUIEnabled){
             writeLogToServerGUI(type, message);
+         }   
         }
+        
     }
     
     /*
@@ -94,5 +100,12 @@ public class ServerLogger {
     private static String getTime(){
         Calendar cal= Calendar.getInstance();
     return time.format(cal.getTime());  
+    }
+    
+    /*
+     * Engedélyezve van-e a naplózás
+     */
+    public static void Enabled(boolean enabled) {
+       isEnabled=enabled; 
     }
 }
