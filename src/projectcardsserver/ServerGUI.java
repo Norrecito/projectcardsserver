@@ -15,6 +15,11 @@ import javax.swing.*;
 public class ServerGUI extends JFrame {
    
     /*
+     * Sortörés jel lekérése és egy változóba deklarálása
+     */
+    private static final String LS = System.getProperty("line.separator");
+    
+    /*
      * A statisztika panelhez tartozó "Játékosok" felirat
      */
     private final JLabel lbStat = new JLabel("Játékosok");
@@ -132,6 +137,6 @@ public class ServerGUI extends JFrame {
      * Új naplóbejegyzés felvitelére szolgáló metódus
      */
     public void addLog(String type, String message){
-       tpLog.append(type+message+"\n"); 
-    }
+       tpLog.append(type+message+LS);
+       }
 }
