@@ -46,17 +46,10 @@ public class ServerHandler {
         this.conf = conf; //a konfiguráció beállítása
         
         /*
-         * Socket és ServerSocket létrehozása
+         * A Socket és ServerSocket létrehozása
          */
         connectionSocket = createSocket();
         welcomeSocket = createServerSocket();
-        
-        /*
-         * Ki és bemeneti csatorna létrehozása
-         */
-        inFromClient = createInPutStream(connectionSocket);
-        outToClient = createOutPutStream(connectionSocket);
-        
     }
     
     /*
@@ -66,6 +59,11 @@ public class ServerHandler {
        while (!welcomeSocket.isClosed()){
             try {
                 connectionSocket = welcomeSocket.accept();
+                /*
+                 * Ki és bemeneti csatorna létrehozása
+                 */
+                inFromClient = createInPutStream(connectionSocket);
+                outToClient = createOutPutStream(connectionSocket);
                 clientSentence = inFromClient.readUTF();
                 System.out.println("Üzenet klienstől: " + clientSentence);
                 capitalizedSentence = clientSentence.toUpperCase() + '\n';
