@@ -47,7 +47,7 @@ public class Config {
     */
     private static final String DefaultConfig=
             CC+" Ez a fájl a Projectcardx néven futó alkalmazás szerver részének konfigurációját tartalmazza"+LS+
-            "Port:6789"+CC+" A port amin a szerver figyel"+LS+
+            "port 6789 "+CC+" A port amin a szerver figyel"+LS+
             CC+" Ez a konfigurációs fájl a későbbieknek jelentősen bővül ujjabb a szerverre vonatkozó beállítási lehetőségekkel";
     
     /*

@@ -11,27 +11,34 @@ import java.util.Calendar;
  * A naplózással foglalkozó osztály
  * @author Norrecito
  */
-public class Logger {
+public class ServerLogger {
      
     /*
      * Az idő kiíratásáhóz szükséges "Szimpla időformátum"
      */
-    SimpleDateFormat time = new SimpleDateFormat("H:mm:ss");
+    private static SimpleDateFormat time = new SimpleDateFormat("H:mm:ss");
+    
+    /*
+     * A naplózáshóz szükséges üzenettípusok deklarálása
+     */
+    private static final String typeINFO = "[INFO] ";
+    private static final String typeWARNING = "[WARNING] ";
+    private static final String typeERROR = "[ERROR] ";
     
     /*
      * Engedélyezve van-e a szerver grafikus kezelőfelülete
      */
-    private boolean isServerGUIEnabled=true;
+    private static boolean isServerGUIEnabled=true;
     
     /*
      * A szerverhez tartozó grafikus felület
      */
-    private ServerGUI servgui;
+    private static ServerGUI servgui;
     
     /*
      * Konstruktor
      */
-    public Logger(boolean isServerGUIEnabled,ServerGUI servgui){
+    public ServerLogger(boolean isServerGUIEnabled,ServerGUI servgui){
         
         this.servgui = servgui;
         this.isServerGUIEnabled = isServerGUIEnabled;
@@ -41,21 +48,35 @@ public class Logger {
     /*
      * Új napló bejegyzés kiíratása a konzolba
      */
-    private void writeLogToConsole(String type, String message){
-        System.out.println(getTime()+type+message);
+    private static void writeLogToConsole(String type, String message){
+        System.out.println(getTime()+type+message+"\n");
     }
     
     /*
      * Új napló bejegyzés kiíratása a grafikus felület "Naplózás és chat részébe"
      */
-    private void writeLogToServerGUI(String type, String message){
+    private static void writeLogToServerGUI(String type, String message){
         servgui.addLog(type, message);
     }
     
     /*
      * Az új naplóbejegyzéseket fogadja el a "Main"-től
      */
-    public void newLog(String type, String message){
+    public static void newLog(int typeNumber, String message){
+        
+        String type="";
+        /*
+         * A típus sorszáma alapján kiválasztja a hozzátartozó bejegyzéstípust
+         */
+        switch(typeNumber){
+            case 1: type=typeINFO;
+            break;
+            case 2: type=typeWARNING;
+            break;
+            case 3: type=typeERROR;
+            break;
+    }
+        
         writeLogToConsole(type, message);
         
         /*
@@ -70,8 +91,8 @@ public class Logger {
     /*
      * Az aktuális idő lekérése az operációs rendszertől
      */
-    private String getTime(){
+    private static String getTime(){
         Calendar cal= Calendar.getInstance();
-    return time.format(cal.getTime()+" ");  
+    return time.format(cal.getTime());  
     }
 }

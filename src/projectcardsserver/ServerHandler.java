@@ -4,12 +4,13 @@
  */
 package projectcardsserver;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * A szerver indításáért, illetve leállításáért felelős osztály
@@ -37,10 +38,10 @@ public class ServerHandler {
     /*
      * A ki és bemeneti csatornáhóz szükséges objektumok
      */
-    private BufferedReader inFromClient;
-    private DataOutputStream outToClient;
+    private ObjectInputStream inFromClient;
+    private ObjectOutputStream outToClient;
     
-    public ServerHandler(Config conf) throws IOException{
+    public ServerHandler(Config conf){
        
         this.conf = conf; //a konfiguráció beállítása
         
@@ -61,16 +62,29 @@ public class ServerHandler {
     /*
      * Elindítja a szervert
      */
-    public void startServer() throws IOException{
+    public void startServer() {
        while (!welcomeSocket.isClosed()){
-           connectionSocket = welcomeSocket.accept();
-           
-           new Thread(new Runnable() { 
-                @Override
-                public void run() {
-                // itt végzed a kommunikációt
-                }
-          }).start();
+            try {
+                connectionSocket = welcomeSocket.accept();
+                clientSentence = inFromClient.readUTF();
+                System.out.println("Üzenet klienstől: " + clientSentence);
+                capitalizedSentence = clientSentence.toUpperCase() + '\n';
+                outToClient.writeBytes(capitalizedSentence);
+               /* new Thread(new Runnable() { 
+                     @Override
+                     public void run() {
+                     // itt végzed a kommunikációt
+                     }
+               }).start();
+               * 
+               */
+            } catch (IOException ex) {
+               /*
+                * Üzen a naplózásnak amennyiben valamilyen okból a szerver indítása sikertelen volt
+                */
+                ServerLogger.newLog(3, "A szerver elindítása nem sikerült!");
+                Logger.getLogger(ServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
            
       } 
     }
@@ -78,15 +92,33 @@ public class ServerHandler {
     /*
      * Leállítja a szervert
      */
-    public void stopServer() throws IOException{
-      if(welcomeSocket.isClosed()) welcomeSocket.close();  
+    public void stopServer(){
+      if(!welcomeSocket.isClosed()) try {
+            welcomeSocket.close();
+        } catch (IOException ex) {
+            /*
+             * Üzen a naplózásnak amennyiben valamilyen okból a szerver leállítása sikertelen volt
+             */
+            ServerLogger.newLog(3, "A szerver leállítása sikertelen!");
+            Logger.getLogger(ServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }  
     }
     
     /*
      * Létrehozza a ServerSocket-et
      */
-    private ServerSocket createServerSocket() throws IOException {
-        return new ServerSocket(6789); //egyenlőre teszt jellegel a "6789"-es portra, később a konfigurációból olvassa majd ki
+    private ServerSocket createServerSocket(){
+        try {
+            return new ServerSocket(6789); //egyenlőre teszt jellegel a "6789"-es portra, később a konfigurációból olvassa majd ki
+        } catch (IOException ex) {
+            /*
+             * Ha nem sikerült létrehozni a ServerSocket-et üzen a naplózásnak
+             */
+            ServerLogger.newLog(3, "Nem sikerült létrehozni a ServerSocket-et!");
+            Logger.getLogger(ServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
     }
     
     /*
@@ -99,14 +131,34 @@ public class ServerHandler {
     /*
      * Létrehozza kliens üzeneteit fogadó csatornát
      */
-    private BufferedReader createInPutStream(Socket connectionSocket) throws IOException{
-       return new BufferedReader(new InputStreamReader(connectionSocket.getInputStream())); 
+    private ObjectInputStream createInPutStream(Socket connectionSocket){
+        try {
+            return new ObjectInputStream(connectionSocket.getInputStream());
+        } catch (IOException ex) {
+            /*
+             * Ha nem sikerül létrehozni az adatcsatornát üzen a naplózásnak
+             */
+            ServerLogger.newLog(3, "Nem sikerült létrehozni a bemeneti adatcsatornát!");
+            Logger.getLogger(ServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
     }
     
     /*
      * Létrehozza a szerver üzeneit küldő csatornát
      */
-    private DataOutputStream createOutPutStream(Socket connectionSocket) throws IOException{
-      return new DataOutputStream(connectionSocket.getOutputStream());  
+    private ObjectOutputStream createOutPutStream(Socket connectionSocket){
+        try {
+            return new ObjectOutputStream(connectionSocket.getOutputStream());
+        } catch (IOException ex) {
+            /*
+             * Ha nem sikerül létrehozni az adatcsatornát üzen a naplózásnak
+             */
+            ServerLogger.newLog(3, "Nem sikerült létrehozni a kimeneti adatcsatornát!");
+            Logger.getLogger(ServerHandler.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
     }
 }

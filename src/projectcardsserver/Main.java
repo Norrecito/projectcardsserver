@@ -22,13 +22,6 @@ public class Main {
     private static final Config conf = Config.getInstance();
     
     /*
-     * A naplózáshóz szükséges üzenettípusok deklarálása
-     */
-    private static final String typeINFO = "[INFO] ";
-    private static final String typeWARNING = "[WARNING] ";
-    private static final String typeERROR = "[ERROR] ";
-    
-    /*
      * Engedélyezve van-e a szerverhez tartozó grafikus felület
      */
     private static boolean guiEnabled=true;
@@ -41,19 +34,25 @@ public class Main {
     /*
      * A naplózással foglalkozó osztály
      */
-    private static final Logger logger = new Logger(guiEnabled,servGUI);
+    private static final ServerLogger logger = new ServerLogger(guiEnabled,servGUI);
+    
+    /*
+     * A szerver indítását illetve leállítását végző osztály
+     */
+    private static final ServerHandler servhandler= new ServerHandler(conf);
     
       /*
        * A Main metódus
        */
       public static void main(String argv[]) throws Exception {
          
+         servhandler.startServer();
+         
+         /*
          String clientSentence; //kliens üzenete
          String capitalizedSentence; //üzenet a kliensnek
          
-         /*
-          * A ServerSocket létrehozása a "6789"-es portra
-          */
+         
          ServerSocket welcomeSocket = new ServerSocket(6789);
 
          while(true)
@@ -67,6 +66,9 @@ public class Main {
             capitalizedSentence = clientSentence.toUpperCase() + '\n';
             outToClient.writeBytes(capitalizedSentence);
          }
+         * 
+         */
+         
       }
     }
 
