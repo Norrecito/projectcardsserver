@@ -37,7 +37,7 @@ public class ServerGUI extends JFrame {
     /*
      * A naplózást tartalmazó szövegterület
      */
-    private final JTextArea tpLog = new JTextArea();
+    private final JTextArea taLog = new JTextArea();
     
     /*
      * A listáhóz tartozó listamodell
@@ -57,7 +57,7 @@ public class ServerGUI extends JFrame {
     /*
      * A naplózást megjelenítő szövegterületet szintén egy görgethető felületre rakom
      */
-    private JScrollPane logScroller = new JScrollPane(tpLog);
+    private JScrollPane logScroller = new JScrollPane(taLog);
     
     /*
      * A naplózást, a hozzá tartozó feliratot, és a chat mezőt megjelenítő panel
@@ -99,17 +99,17 @@ public class ServerGUI extends JFrame {
        
        initComponents(); //A komponensek inicializálása
        initWindow();     //Az ablak inicializálása
-       tpLog.setText("[INFO] Grafikus felület elindítva"); //Teszt
+       taLog.append("[INFO] Grafikus felület elindítva\n"); //Teszt
     }
     
     private void initComponents(){
         
-        tpLog.setEditable(false); //Letiltja a szerkeszthetőségét a naplózásnak
+        taLog.setEditable(false); //Letiltja a szerkeszthetőségét a naplózásnak
         
         /*
          * Komponensek méretének beállítása
          */
-        logScroller.setPreferredSize(new Dimension(250,250)); //A naplózást tartalmazó görgető felület méretének beállítása
+        logScroller.setPreferredSize(new Dimension(400,250)); //A naplózást tartalmazó görgető felület méretének beállítása
         tfChat.setPreferredSize(new Dimension(250,25)); //A chat mező méretének beállítása
         charlistScroller.setPreferredSize(new Dimension(120,250)); //A játékos listát tartalmaző görgető felület méretének beállítása
      }
@@ -137,6 +137,13 @@ public class ServerGUI extends JFrame {
      * Új naplóbejegyzés felvitelére szolgáló metódus
      */
     public void addLog(String type, String message){
-       tpLog.append(type+message+LS);
+       taLog.append(type+message+"\n");
        }
+    
+    /*
+     * Engedélyezve van-e a grafikus felület
+     */
+    public void enabled(boolean enabled){
+        setVisible(enabled);
+    }
 }
