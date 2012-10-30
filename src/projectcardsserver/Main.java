@@ -4,7 +4,8 @@
  */
 package projectcardsserver;
 
-import java.io.*;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -37,16 +38,16 @@ public class Main {
     /*
      * A szerver indítását illetve leállítását végző osztály
      */
-    //private static final ServerHandler servhandler= new ServerHandler(conf);
+    private static ServerHandler servhandler= new ServerHandler(conf);
     
       /*
        * A Main metódus
        */
       public static void main(String argv[]) throws Exception {
          
-         //servhandler.startServer();
+         servhandler.startServer();
          
-         
+         /*
          String clientSentence; //kliens üzenete
          String capitalizedSentence; //üzenet a kliensnek
          
@@ -65,6 +66,8 @@ public class Main {
             outToClient.writeUTF(capitalizedSentence);
          }
          
+         * 
+         */
          
          
       }
