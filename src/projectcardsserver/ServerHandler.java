@@ -24,6 +24,11 @@ public class ServerHandler {
     Config conf;
     
     /*
+     * Az objektumok küldését végző osztály
+     */
+    ServerMessageTransfer msgtrans;
+    
+    /*
      * Segédváltozók
      */
     private String clientSentence; //kliens üzenete
@@ -64,18 +69,9 @@ public class ServerHandler {
                  */
                 inFromClient = createInPutStream(connectionSocket);
                 outToClient = createOutPutStream(connectionSocket);
-                clientSentence = inFromClient.readUTF();
-                System.out.println("Üzenet klienstől: " + clientSentence);
-                capitalizedSentence = clientSentence.toUpperCase() + '\n';
-                outToClient.writeBytes(capitalizedSentence);
-               /* new Thread(new Runnable() { 
-                     @Override
-                     public void run() {
-                     // itt végzed a kommunikációt
-                     }
-               }).start();
-               * 
-               */
+                msgtrans = new ServerMessageTransfer(connectionSocket);
+                msgtrans.run();
+               
             } catch (IOException ex) {
                /*
                 * Üzen a naplózásnak amennyiben valamilyen okból a szerver indítása sikertelen volt
