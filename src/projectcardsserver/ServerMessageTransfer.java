@@ -7,7 +7,7 @@ package projectcardsserver;
 import java.net.Socket;
 
 /**
- *
+ * A szerverhez tartozó üzenetek küldését, és fogadását végző osztály
  * @author Norrecito
  */
 public class ServerMessageTransfer extends MsgTransfer {
@@ -27,6 +27,9 @@ public class ServerMessageTransfer extends MsgTransfer {
         System.out.println(o.toString()); 
     }
     
+    /*
+     * Induláskor
+     */
     @Override
     protected void onStart(){
        sendMessage("szerver üzeni, hogy asdfgh"); 
