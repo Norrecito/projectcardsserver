@@ -40,6 +40,6 @@ public class ServerMessageTransfer extends MsgTransfer {
      */
     @Override
     protected void onStart(){
-       sendMessage("szerver üzeni, hogy asdfgh"); 
+       sendMessage("<Tesztüzenet a szervertől az indulásról>");
     }
 }

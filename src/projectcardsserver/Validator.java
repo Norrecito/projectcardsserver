@@ -15,6 +15,7 @@ public class Validator {
      */
     public static boolean validate(UsrData usrdata){
         //Tartalom
+        System.out.println("Felhasználói adatok megkapva!");
         return true;
   }
     
