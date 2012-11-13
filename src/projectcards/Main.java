@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package projectcardsserver;
+package projectcards;
 
 /**
  * Itt még miden erőssen teszt jellegü

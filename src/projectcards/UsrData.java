@@ -2,20 +2,29 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package projectcardsserver;
+package projectcards;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author Norrecito
  * A felhasználóhóz tartozó információkat tároló osztály
  */
-public class UsrData {
+public class UsrData implements Serializable {
     
     /*
      * A jelszó és a felhasználónévhez tartozó szövegek deklarálása 
      */
     private String Username;
     private String Password;
+    
+    /*
+     * A felhasználóhóz tartozó karakterlista
+     * alap esetben "null", a szerver fogja visszaadni a teljes listát a hitelesítést követően
+     */
+    private ArrayList<Character> charList;
 
     /*
      * Az első konstruktor
@@ -64,5 +73,18 @@ public class UsrData {
         this.Username = Username;
     }
     
+    /*
+     * Karakterlista lekérése
+     */
+    public ArrayList<Character> getCharList() {
+        return charList;
+    }
+    
+    /*
+     * Karakterlista beállítása
+     */
+    public void setCharList(ArrayList<Character> charList) {
+        this.charList = charList;
+    }
     
 }
