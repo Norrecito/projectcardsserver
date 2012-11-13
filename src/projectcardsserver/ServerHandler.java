@@ -64,6 +64,7 @@ public class ServerHandler {
        while (!welcomeSocket.isClosed()){
             try {
                 connectionSocket = welcomeSocket.accept();
+                ServerLogger.newLog(1,"Új kliens kapcsolódott, az ip címe: "+welcomeSocket.getInetAddress());
                 /*
                  * Ki és bemeneti csatorna létrehozása
                  */
