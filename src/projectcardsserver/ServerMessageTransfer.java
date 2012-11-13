@@ -24,11 +24,12 @@ public class ServerMessageTransfer extends MsgTransfer {
      */
     @Override
     protected void onMessage(Object o){
-        //Amenyiben az üzenet String, kiírja a konzolba
+        
         if(o instanceof String){
+         //Amenyiben az üzenet String, kiírja a konzolba   
          System.out.println(o.toString());    
-        //Amennyiben az üzenet egy UsrData típusú objektum, elküldi validálásra a megfelelő osztálynak
         } else if(o instanceof UsrData) {
+            //Amennyiben az üzenet egy UsrData típusú objektum, elküldi validálásra (hitelesítésre) a megfelelő osztálynak
             Validator.validate((UsrData)o);
         }
         
