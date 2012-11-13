@@ -13,7 +13,7 @@ public class Validator {
     /*
      * Ellenőrzi, hogy a számára megadott felhasználónév és jelszó helyes-e (benne van-e az adatbázisban)
      */
-    public static boolean validate(String username, String password){
+    public static boolean validate(UsrData usrdata){
         //Tartalom
         return true;
   }
