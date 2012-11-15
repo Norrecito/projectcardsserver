@@ -2,18 +2,27 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package projectcards;
+package entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Norrecito
  * A felhasználóhóz tartozó információkat tároló osztály
  */
+@Entity
 public class UsrData implements Serializable {
+    
+    @Id
+    @GeneratedValue
+    private long id;
     
     /*
      * A jelszó és a felhasználónévhez tartozó szövegek deklarálása 
@@ -25,6 +34,7 @@ public class UsrData implements Serializable {
      * A felhasználóhóz tartozó karakterlista
      * alap esetben "null", a szerver fogja visszaadni a teljes listát a hitelesítést követően
      */
+    @ManyToOne
     private List<Char> chars = new ArrayList<Char>();
 
     /*
