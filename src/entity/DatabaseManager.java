@@ -18,6 +18,11 @@ import projectcards.Cast;
 public class DatabaseManager {
     
     /*
+     * Az adatbázisban szereplő felhasználók listája
+     */
+    private static List<UsrData> users;
+    
+    /*
      * Az adatbázishóz kapcsolódó EntityManagerFactory és EntityManager létrehozása
      */
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("database/projectcards.odb");
@@ -64,6 +69,15 @@ public class DatabaseManager {
            System.out.println("kills: " + firstChar.getStats().getKills());
            System.out.println("OneToMany test: " + firstChar.getUser().getUsername()); 
         }
+    }
+    
+    /*
+     * Kiolvassa a felhasználók listáját az adatbázisból, és visszaadja ezt a listát
+     */
+    public static List<UsrData> getUsers(){
+       TypedQuery<UsrData> query = em.createQuery("select u from UsrData u", UsrData.class); //A lekérdezés deklarálása
+       users = query.getResultList(); //A lekérdezés eredményének elmentése egy listába
+       return users;
     }
     
     /*

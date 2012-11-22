@@ -125,3 +125,71 @@ Type entity.CharStats is not enhanced.
 [2012-11-22 12:37:58 #6 store] 
 Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is closed by 7700@Norrecito-HP
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-22 15:54:37 #1 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is opened by 3160@Norrecito-HP
+
+[2012-11-22 15:54:37 #2 type] 
+Type entity.Char is not enhanced.
+
+[2012-11-22 15:54:37 #3 type] 
+Type entity.UsrData is not enhanced.
+
+[2012-11-22 15:54:37 #4 type] 
+Type entity.CharStats is not enhanced.
+
+[2012-11-22 15:54:37 #5 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is closed by 3160@Norrecito-HP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-22 15:55:06 #1 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is opened by 6632@Norrecito-HP
+
+[2012-11-22 15:55:06 #2 type] 
+Type entity.Char is not enhanced.
+
+[2012-11-22 15:55:06 #3 type] 
+Type entity.UsrData is not enhanced.
+
+[2012-11-22 15:55:06 #4 type] 
+Type entity.CharStats is not enhanced.
+
+[2012-11-22 15:55:06 #5 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is closed by 6632@Norrecito-HP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-22 15:58:46 #1 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is opened by 11552@Norrecito-HP
+
+[2012-11-22 15:58:46 #2 type] 
+Type entity.Char is not enhanced.
+
+[2012-11-22 15:58:46 #3 type] 
+Type entity.UsrData is not enhanced.
+
+[2012-11-22 15:58:46 #4 type] 
+Type entity.CharStats is not enhanced.
+
+[2012-11-22 15:58:46 #5 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is closed by 11552@Norrecito-HP
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-22 16:12:59 #1 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is opened by 13848@Norrecito-HP
+
+[2012-11-22 16:12:59 #2 type] 
+Type entity.Char is not enhanced.
+
+[2012-11-22 16:12:59 #3 type] 
+Type entity.UsrData is not enhanced.
+
+[2012-11-22 16:12:59 #4 type] 
+Type entity.CharStats is not enhanced.
+
+[2012-11-22 16:12:59 #5 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is closed by 13848@Norrecito-HP
+
