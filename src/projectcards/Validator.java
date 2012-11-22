@@ -4,6 +4,8 @@
  */
 package projectcards;
 
+import entity.DatabaseManager;
+
 /**
  * A felhasználónév és a jelszó hitelesítését végző osztály
  * @author Norrecito
@@ -16,6 +18,10 @@ public class Validator {
     public static boolean validate(UsrData usrdata){
         //Tartalom
         System.out.println("Felhasználói adatok megkapva!");
+        //TESZT
+        DatabaseManager.testCreate(); //Teszt sor beírása az adatbázisba
+        DatabaseManager.testQuery();  //Teszt sor kiolvasása az adatbázisból
+        
         return true;
   }
     
