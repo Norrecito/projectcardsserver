@@ -12,3 +12,17 @@ Type entity.UsrData is not enhanced.
 [2012-11-22 11:36:24 #4 type] 
 Type entity.CharStats is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2012-11-22 12:17:49 #1 store] 
+Database 'C:\Users\Norrecito\Documents\NetBeansProjects\projectcardsserver\database\projectcards.odb' is opened by 2056@Norrecito-HP
+
+[2012-11-22 12:17:49 #2 type] 
+Type entity.Char is not enhanced.
+
+[2012-11-22 12:17:49 #3 type] 
+Type entity.UsrData is not enhanced.
+
+[2012-11-22 12:17:49 #4 type] 
+Type entity.CharStats is not enhanced.
+

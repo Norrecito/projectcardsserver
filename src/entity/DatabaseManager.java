@@ -31,7 +31,7 @@ public class DatabaseManager {
       
         UsrData u = new UsrData("Norrecito","valami");  //Új felhasználó gyártása (Felhasználónév, Jelszó)
         Char c = new Char("char1", Cast.ARCHER);        //Új karakter gyártása (Név, Kaszt)
-        u.getCharList().add(c);                         //A karakter hozzáadása a felhasználó karakterlistájáhóz
+        u.getChars().add(c);                         //A karakter hozzáadása a felhasználó karakterlistájáhóz
         c.setLvl(100);                                  //A karakter szintjének beállítása
         c.getStats().setKills(10000);                   //A karakterhez tartozó statisztikában a legyőzőtt ellenfelek beállítása
         
@@ -59,7 +59,7 @@ public class DatabaseManager {
          */
         for (UsrData u : results){
            System.out.println("name: " + u.getUsername());
-           Char firstChar = u.getCharList().get(0);
+           Char firstChar = u.getChars().get(0);
            System.out.println("first character: " + firstChar.getCast());
            System.out.println("kills: " + firstChar.getStats().getKills());
            System.out.println("OneToMany test: " + firstChar.getUser().getUsername()); 
