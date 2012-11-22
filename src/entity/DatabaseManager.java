@@ -65,4 +65,12 @@ public class DatabaseManager {
            System.out.println("OneToMany test: " + firstChar.getUser().getUsername()); 
         }
     }
+    
+    /*
+     * Az adatbázisról való lekapcsolódást elvégző metódus
+     */
+    public static void disconnect(){
+        em.close();
+        emf.close();
+    }
 }

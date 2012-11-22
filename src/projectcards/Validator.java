@@ -21,22 +21,8 @@ public class Validator {
         //TESZT
         DatabaseManager.testCreate(); //Teszt sor beírása az adatbázisba
         DatabaseManager.testQuery();  //Teszt sor kiolvasása az adatbázisból
+        DatabaseManager.disconnect(); //Lekapcsolódás az adatbázisról
         
         return true;
   }
-    
-    /*
-     * Csatlakozik az adatbázishóz
-     */
-    private static void connectToDatabase(){
-        //Tartalom
-    }
-    
-    /*
-     * Lecsatlakozik az adatbázisról
-     */
-    private static void diconnectFromDatabase(){
-        //Tartalom
-    }
-    
 }
